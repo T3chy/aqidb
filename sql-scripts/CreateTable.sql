@@ -1,5 +1,9 @@
 CREATE TABLE sensdata (
-	time TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	id int,
-	temp int
+	name varchar(15),
+	temp int,
+	humidity int,
+	pressure int,
+	altitude int
 );
