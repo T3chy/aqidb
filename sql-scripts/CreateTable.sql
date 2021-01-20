@@ -5,5 +5,9 @@ CREATE TABLE sensdata (
 	temp int,
 	humidity int,
 	pressure int,
-	altitude int
+	altitude int,
+	NO2 int,
+	NH3 int,
+	CO int,
+	CO2 int
 );
