@@ -1,3 +1,14 @@
+CREATE TABLE users (
+	username varchar(15) NOT NULL PRIMARY KEY,
+	password varchar(60) NOT NULL,
+	created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+CREATE TABLE sensors (
+	isup BOOLEAN,
+	sensorname varchar(15) NOT NULL PRIMARY KEY,
+	belongsto varchar(15) NOT NULL,
+	FOREIGN KEY (belongsto) REFERENCES users(username)
+);
 CREATE TABLE sensdata (
 	time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	sensorname varchar(15) NOT NULL,
@@ -10,16 +21,4 @@ CREATE TABLE sensdata (
 	CO FLOAT,
 	CO2 int,
 	FOREIGN KEY (sensorname) REFERENCES sensors(sensorname)
-);
-CREATE TABLE sensors (
-	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-	BOOLEAN isup DEFAULT false,
-	sensorname varchar(15) NOT NULL UNIQUE,
-	belongsto varchar(15) NOT NULL,
-	FOREIGN KEY (belongsto) REFERENCES users(username)
-);
-CREATE TABLE users (
-	username varchar(15) NOT NULL UNIQUE PRIMARY KEY,
-	password varchar(20) NOT NULL,
-	created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
 );
