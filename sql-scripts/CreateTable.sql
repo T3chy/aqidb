@@ -6,19 +6,31 @@ CREATE TABLE users (
 CREATE TABLE sensors (
 	isup BOOLEAN,
 	sensorname varchar(15) NOT NULL PRIMARY KEY,
-	belongsto varchar(15) NOT NULL,
+	belongsto varchar(15) DEFAULT NULL,
 	FOREIGN KEY (belongsto) REFERENCES users(username)
 );
 CREATE TABLE sensdata (
 	time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	sensorname varchar(15) NOT NULL,
-	temp int,
+	temperature FLOAT,
+	altitude FLOAT,
 	humidity int,
 	pressure int,
-	altitude int,
-	NO2 FLOAT,
-	NH3 FLOAT,
-	CO FLOAT,
-	CO2 int,
+	no2_conc_ppm FLOAT,
+	nh3_conc_ppm FLOAT,
+	co_conc_ppm FLOAT,
+	co2_conc_ppm FLOAT,
+	pm1_0_conc_fact FLOAT,
+	pm2_5_conc_fact FLOAT,
+	pm10_0_conc_fact FLOAT,
+	pm1_0_conc_atm FLOAT,
+	pm2_5_conc_atm FLOAT,
+	pm10_0_conc_atm FLOAT,
+	pcnt_0_3 FLOAT,
+	pcnt_0_5 FLOAT,
+	pcnt_1_0 FLOAT,
+	pcnt_2_5 FLOAT,
+	pcnt_5_0 FLOAT,
+	pcnt_10_0 FLOAT,
 	FOREIGN KEY (sensorname) REFERENCES sensors(sensorname)
 );
